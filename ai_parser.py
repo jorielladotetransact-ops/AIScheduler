@@ -5,7 +5,7 @@ import json
 import datetime
 
 # --- PASTE YOUR GOOGLE AI API KEY HERE ---
-API_KEY = 'AIzaSyD4ILK61H1BlfT9Z1uBjSXLd10Bpn87B8w'
+API_KEY = 'GOOGLE AI API KEY HERE'
 
 genai.configure(api_key=API_KEY)
 model = genai.GenerativeModel('gemini-pro')
@@ -47,4 +47,5 @@ def parse_tasks_from_text(text):
     except Exception as e:
         print(f"Error parsing AI response: {e}")
         # Return an empty list if parsing fails
+
         return []
