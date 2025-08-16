@@ -1,5 +1,6 @@
 # In ai_parser.py
 
+import os
 import google.generativeai as genai
 import json
 import datetime
@@ -49,4 +50,5 @@ def parse_tasks_from_text(text):
         # Return an empty list if parsing fails
 
         return []
+
 
