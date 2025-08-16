@@ -223,10 +223,7 @@ def main():
     
     application = Application.builder().token(BOT_TOKEN).persistence(persistence).build()
 
-    # --- NEW FUNCTION TO SET UP JOBS ---
     async def post_init(app: Application):
-        """This function runs after the bot has started."""
-        # We schedule the job here, ensuring the bot is fully initialized
         if 'chat_id' in app.user_data:
             chat_id = app.user_data['chat_id']
             briefing_time = datetime.time(hour=5, minute=0, tzinfo=LOCAL_TIMEZONE)
@@ -237,20 +234,16 @@ def main():
                 chat_id=chat_id
             )
 
-    # We tell the application to run our new function after it's set up
     application.post_init = post_init
-
-    # Add command handlers
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CommandHandler("upcoming", upcoming_events))
-    
-    # Add the main text handler for scheduling
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, schedule_tasks_handler))
 
-    # This runs the bot and will now correctly trigger post_init
+    # We are going back to the simple and reliable polling method
     application.run_polling()
 
 if __name__ == '__main__':
     main()
+
 
 
