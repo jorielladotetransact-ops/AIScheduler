@@ -5,7 +5,7 @@ import json
 import datetime
 
 # --- PASTE YOUR GOOGLE AI API KEY HERE ---
-API_KEY = 'GOOGLE AI API KEY HERE'
+API_KEY = os.environ.get('GOOGLE_AI_API_KEY')
 
 genai.configure(api_key=API_KEY)
 model = genai.GenerativeModel('gemini-pro')
@@ -49,3 +49,4 @@ def parse_tasks_from_text(text):
         # Return an empty list if parsing fails
 
         return []
+
