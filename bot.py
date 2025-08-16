@@ -9,7 +9,7 @@ from calendar_manager import get_calendar_service
 from ai_parser import parse_tasks_from_text
 
 # --- CONFIGURATION ---
-BOT_TOKEN = "BOT_API_HERE"
+BOT_TOKEN = os.environ.get('TELEGRAM_BOT_TOKEN')
 LOCAL_TIMEZONE = pytz.timezone("Asia/Manila") # Philippines Timezone
 WORK_HOURS = {"start": 6, "end": 21}      # 6 AM to 9 PM
 PERSONAL_HOURS = {"start": 22, "end": 5}   # 10 PM to 5 AM
@@ -238,3 +238,4 @@ def main():
 if __name__ == '__main__':
 
     main()
+
